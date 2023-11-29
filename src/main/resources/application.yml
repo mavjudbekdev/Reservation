@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/reservation
+    password: 123
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      show-sql: true
+      format-sql: true

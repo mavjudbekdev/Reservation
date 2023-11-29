@@ -1,6 +1,7 @@
 package com.example.reservatio.stays.room.repository;
 
-import com.example.reservation.stays.room.entity.Room;
+
+import com.example.reservatio.stays.room.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

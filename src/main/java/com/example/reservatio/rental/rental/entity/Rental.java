@@ -1,7 +1,7 @@
 package com.example.reservatio.rental.rental.entity;
 
-import com.example.reservation.rental.car.entity.Car;
-import com.example.reservation.rental.customer.entity.Customer;
+import com.example.reservatio.rental.car.entity.Car;
+import com.example.reservatio.rental.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

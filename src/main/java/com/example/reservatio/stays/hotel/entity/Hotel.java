@@ -1,7 +1,7 @@
 package com.example.reservatio.stays.hotel.entity;
 
-import com.example.reservation.stays.hotel.address.Region;
-import com.example.reservation.stays.room.entity.Room;
+import com.example.reservatio.stays.hotel.address.Region;
+import com.example.reservatio.stays.room.entity.Room;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
