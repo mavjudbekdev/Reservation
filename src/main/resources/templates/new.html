@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{../css/style.css}" href="../static/css/style.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .custom-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #3c78f3;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .nav-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-links ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    .nav-links ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #fff;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
+
+    .nav-links ul li a:hover {
+      color: #ffd700;
+    }
+
+    .auth-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      border: 1px solid #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+    }
+
+    .auth-links a:hover {
+      background-color: #ffd700;
+      color: #333;
+    }
+
+    footer {
+      background-color: #3c78f3;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+
+</head>
+<body>
+<header class="custom-header">
+  <div class="logo">
+    <h1>Reservation</h1>
+  </div>
+  <nav class="nav-links">
+    <ul>
+      <li><a href="#cars">Cars</a></li>
+      <li><a href="#hotels">Hotels</a></li>
+      <li><a href="#services">Services</a></li>
+    </ul>
+  </nav>
+  <div class="auth-links">
+    <a href="#signin">Sign In</a>
+    <a href="#signup">Sign Up</a>
+  </div>
+</header>
+</body>
+</html>
