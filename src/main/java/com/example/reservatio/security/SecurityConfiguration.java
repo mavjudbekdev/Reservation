@@ -22,7 +22,8 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer:: disable)
                 .authorizeHttpRequests(
                         registry -> registry
-                                .requestMatchers("/index-i", "/login", "/register","/")
+                                .requestMatchers("/index-i", "/login", "/register"
+                                        , "/","/css**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
