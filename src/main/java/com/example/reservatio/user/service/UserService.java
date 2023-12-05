@@ -1,5 +1,7 @@
 package com.example.reservatio.user.service;
 
+import com.example.reservatio.role.entity.Role;
+import com.example.reservatio.role.repository.RoleRepository;
 import com.example.reservatio.user.entity.User;
 import com.example.reservatio.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -18,6 +20,7 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
 
     @Override
@@ -27,7 +30,21 @@ public class UserService implements UserDetailsService {
 
     public void register(String username, String password) {
         password = passwordEncoder.encode(password);
-        User user = new User(null,username,password);
+        Role defaultRole = roleRepository.findByName("USER"); // Replace roleRepository with your actual repository
+
+        if (defaultRole == null) {
+            // Create a default role if it doesn't exist in the database
+            defaultRole = new Role();
+            defaultRole.setName("USER");
+            roleRepository.save(defaultRole);
+        }
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setRole(defaultRole); // Assigning the default role to the user
+
         userRepository.save(user);
     }
+
 }
