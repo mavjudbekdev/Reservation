@@ -2,6 +2,7 @@ package com.example.reservatio.stays.room.entity;
 
 
 import com.example.reservatio.stays.hotel.entity.Hotel;
+import com.example.reservatio.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +20,7 @@ public class Room {
     private Integer number;
     @ManyToOne()
     private Hotel hotel;
+
+    @ManyToOne
+    private User user;
 }

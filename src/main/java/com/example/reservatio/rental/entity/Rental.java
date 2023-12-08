@@ -1,7 +1,7 @@
-package com.example.reservatio.rental.rental.entity;
+package com.example.reservatio.rental.entity;
 
-import com.example.reservatio.rental.car.entity.Car;
-import com.example.reservatio.rental.customer.entity.Customer;
+import com.example.reservatio.car.entity.Car;
+import com.example.reservatio.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,18 +19,15 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @Column(name = "rental_start_date")
-    private LocalDate rentalStartDate;
+    private LocalDate startDate;
 
-    @Column(name = "rental_end_date")
-    private LocalDate rentalEndDate;
+    private LocalDate endDate;
 }

@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth/test")
-public class AuthorizationTestController {
+@RequestMapping("/auth/per")
+public class AdminController {
 
-    
-    @PreAuthorize("hasAuthority('PERMISSION_USER_CREATE')")
+    @PreAuthorize(value = "hasAuthority('ROLE_USER')")
     @GetMapping("/user_create")
     public String userCreate(){
         return "user_create";
     }
 
 
-    @PreAuthorize("hasAuthority('PERMISSION_USER_UPDATE')")
+
+    @PreAuthorize(value = "hasAuthority('ROLE_USER')")
     @GetMapping("/user_update")
     public String userUpdate(){
         return "user_update";
@@ -25,7 +25,7 @@ public class AuthorizationTestController {
 
 
 
-    @PreAuthorize("hasAuthority('PERMISSION_USER_DELETE')")
+    @PreAuthorize(value = "hasAuthority('ROLE_ADMIN')")
     @GetMapping("/user_delete")
     public String userDelete(){
         return "user_delete";
@@ -33,24 +33,11 @@ public class AuthorizationTestController {
 
 
 
-    @PreAuthorize("hasAuthority('PERMISSION_USER_READ')")
+    @PreAuthorize(value = "hasAuthority('ROLE_SUPER_ADMIN')")
     @GetMapping("/user_read")
     public String userRead(){
         return "user_read";
     }
 
 
-
-    @PreAuthorize("hasAuthority('PERMISSION_USER_LESSON_START')")
-    @GetMapping("/user_lesson_start")
-    public String userLessonStart(){
-        return "user_lesson_start";
-    }
-
-
-    @PreAuthorize("hasAuthority('PERMISSION_USER_LESSON_END')")
-    @GetMapping("/user_lesson_end")
-    public String userLessonEnd(){
-        return "user_lesson_end";
-    }
 }

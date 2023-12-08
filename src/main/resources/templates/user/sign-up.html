@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="header_name">
+            <a href="#"><h1>Booking.com</h1></a>
+        </div>
+
+        <div class="header_links">
+            <a href="#"><h4>UZS</h4></a>
+            <a href="#"><h4>help</h4></a>
+            <a href="">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container">
+    <form class="signup-form" th:action="@{/auth/sign-up}" method="post">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <br>
+            <br>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="buttons">
+            <button type="submit">Continue with email</button>
+        </div>
+        <p class="terms"><a href="#">Terms & conditions</a> and <a href="#">Privacy statement</a></p>
+    </form>
+</div>
+
+
+</body>
+</html>
