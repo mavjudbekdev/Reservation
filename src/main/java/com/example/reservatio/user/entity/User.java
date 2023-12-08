@@ -1,15 +1,14 @@
 package com.example.reservatio.user.entity;
 
-import com.example.reservatio.role.entity.Role;
+import com.example.reservatio.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
+import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Collections;
-
+import java.util.List;
 
 @Data
 @Table(name = "`user`")
@@ -21,26 +20,34 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String username;
+
+    @Column(unique = true)
+    private String email;
+
     private String password;
 
-    @ManyToOne
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
+    @Enumerated(EnumType.STRING)
     private Role role;
+
+    private String firstName;
+    private String lastName;
+    @Column(unique = true)
+    private String phoneNumber;
+
+    @Column(unique = true)
+    private String cardNumber;
+    private LocalDateTime userCreateAT;
+    private LocalDateTime userUpdateAT;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return role
-                .getPermissions()
-                .stream()
-                .map(p -> new SimpleGrantedAuthority(p.name()))
-                .toList();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return List.of(authority);
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
 

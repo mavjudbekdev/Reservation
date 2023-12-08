@@ -1,9 +1,9 @@
-package com.example.reservatio.rental.rental.service;
+package com.example.reservatio.car;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
-public class RentalService {
+public class CarService {
+
 }
