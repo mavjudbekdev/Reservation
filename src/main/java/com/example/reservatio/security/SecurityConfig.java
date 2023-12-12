@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final String[] openPathUrl = {"/","/auth/sign-in", "/auth/sign-up","/css/**"};
+    private final String[] openPathUrl = {"/", "/car", "/car/car-home", "/car/get-all-car", "/auth/sign-in", "/auth/sign-up", "/css/**", "/image/**"};
 
     private final AuthenticationHandler successHandler;
 

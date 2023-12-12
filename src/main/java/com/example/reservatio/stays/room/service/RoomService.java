@@ -1,7 +1,7 @@
 package com.example.reservatio.stays.room.service;
 
 import com.example.reservatio.stays.hotel.entity.Hotel;
-import com.example.reservatio.stays.hotel.repository.HotelRepository;
+import com.example.reservatio.stays.hotel.HotelRepository;
 import com.example.reservatio.stays.room.RoomCreateDto;
 import com.example.reservatio.stays.room.RoomModelMapper;
 import com.example.reservatio.stays.room.entity.Room;

@@ -32,7 +32,7 @@ public class Car {
     private Integer dailyPrice;
 
     @OneToMany(mappedBy = "car")
-    private List<Rental> rentals;
+    private List<Rental> rents;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

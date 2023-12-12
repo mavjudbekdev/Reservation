@@ -1,10 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+   <title>Document</title>
 </head>
 <body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-apple" aria-hidden="false"></i></span>
+                        <span class="title"><h2>Booking.com</h2></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="bed-outline"></ion-icon></i></span>
+                        <span class="title">Hotel</span>
+                     </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="car-sport-outline"></ion-icon></i></span>
+                        <span class="title">Car</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="person-add-outline"></ion-icon></i> </span>
+                        <span class="title">Role</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="cog-outline"></ion-icon></i></span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li> 
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></i></span>
+                        <span class="title">users</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></i></span>
+                        <span class="title">Sign out</span>
+                     </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle" onclick="toggleMenu();"></div>
+                    <div class="search">
+                        <label>
+                            <input type="text" class="text" placeholder="Search here">
+                            <i class="fa fa-search" aria-hidden="true"></i> 
+                        </label>
+                    </div>
+                    <div class="user">
+                        <img src="../image/men.png " alt="">
+                   </div>
+                 </div>
+                 <div class="carBox">
+                    <div class="card">
+                        <div>
+                            <div class="number">1,042</div>
+                            <div class="carName">Daily Wiews</div>
+                        </div>
+
+                        <div class="iconBox">
+                            <i class="fa fa-eye" aria-hidden="true"></i> 
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div>
+                            <div class="number">80</div>
+                            <div class="carName">Sales</div>
+                        </div>
+
+                        <div class="iconBox">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </div>
+                    </div>
+  
+                    <div class="card">
+                        <div>
+                            <div class="number">204</div>
+                            <div class="carName">Comments</div>
+                        </div>
+
+                        <div class="iconBox">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                        </div>
+                    </div> 
+
+                    <div class="card">
+                        <div>
+                            <div class="number">$6.042</div>
+                            <div class="carName">Earning</div>
+                        </div>
+
+                        <div class="iconBox">
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                    </div> 
+
+                </div>
+                    <div class="details">
+
+                        <a href="/super/create-car"> create car</a>
+                        <a href="/super/create-car"> create car</a>
+
+                    </div>
+            </div>
+         </div>
 
 </body>
-</html>
+
+    <script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+
+
+        function toggle(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            let hotel = document.querySelector('.hotel'); // Hotel elementini tanlash
+
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+
+            hotel.classList.toggle('active'); // Hotel elementini yoqish/yoqish
+        }
+    </script>
+
+<script src="https://kit.fontawesome.com/9c52345149.js" crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html> 
