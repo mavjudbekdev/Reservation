@@ -1,5 +1,6 @@
-package com.example.reservatio.stays.hotel;
+package com.example.reservatio.stays.hotel.dto;
 
+import com.example.reservatio.stays.hotel.HotelService;
 import com.example.reservatio.stays.hotel.dto.HotelCreateDto;
 import com.example.reservatio.stays.hotel.dto.HotelResponseDto;
 import lombok.RequiredArgsConstructor;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/car-create.css}">
+
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="header_name">
+            <a href="http://localhost:8080/auth/admin"><h1>Booking.com</h1></a>
+        </div>
+
+        <div class="header_links">
+            <a href="#"><h4>UZS</h4></a>
+            <a href="#"><h4>help</h4></a>
+            <a href="">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container">
+    <form class="signup-form" th:action="@{/super/create-car}" method="post">
+        <h2>Car create </h2>
+        <div class="input-group">
+            <input type="text" id="name" name="name" class="input-type" placeholder="Name" required>
+            <br>
+            <br>
+            <input type="text" id="description" name="description" class="input-type" placeholder="Description" required>
+
+            <br>
+            <br>
+            <input type="text" id="number" name="number" class="input-type" placeholder="Number" required>
+
+            <br>
+            <br>
+            <input type="date" id="manufacturedDate" name="manufacturedDate" class="input-type" placeholder="manufacturedDate" required>
+
+            <br>
+            <br>
+            <input type="number" id="dailyPrice" name="dailyPrice" class="input-type" placeholder="Daily Price" required>
+        </div>
+        <div class="buttons">
+            <button type="submit">Create car</button>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

@@ -3,10 +3,10 @@ package com.example.reservatio.stays.hotel;
 import com.example.reservatio.stays.hotel.dto.HotelCreateDto;
 import com.example.reservatio.stays.hotel.dto.HotelResponseDto;
 import com.example.reservatio.stays.hotel.entity.Hotel;
-import com.example.reservatio.stays.hotel.repository.HotelRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,7 +20,7 @@ public class HotelService {
     private final HotelModelMapper hotelModelMapper;
     private final HotelRepository hotelRepository;
 
-    public void create(HotelCreateDto hotelCreateDto) {
+    public void create(@ModelAttribute HotelCreateDto hotelCreateDto) {
         Hotel hotel = hotelModelMapper.toEntity(hotelCreateDto);
         hotelRepository.save(hotel);
     }

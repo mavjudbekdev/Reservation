@@ -8,10 +8,13 @@ public enum Permissions {
     READ,
     USERS,
     HOTELS,
+    CARS,
+    ROOMS,
     ADMINS,
     ORDERS,
     CHANGE_PASSWORD,
     ALL_USER,
     ALL_ORDERS,
+
 
 }

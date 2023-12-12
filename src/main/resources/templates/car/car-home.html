@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="header_name">
+            <a href="/"><h1>Booking.com</h1></a>
+        </div>
+
+        <div class="header_links">
+            <a href="#"><h4>UZS</h4></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjLRbv4_WaVJc6mTORuadcHDIqfmU4ysxROsDgDPlSg&s"
+                 alt=""/>
+            <a href="">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+            <a href="#"><h4>List your property</h4></a>
+            <a class="register" sec:authorize="isAnonymous()" href="/auth/sign-up">Register</a>
+            <a class="sign" sec:authorize="isAnonymous()" href="/auth/sign-in">Sign in </a>
+
+            <a class="sign" href="#" sec:authorize="isAuthenticated()" th:href="@{/auth/user-info}">Your account</a>
+
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="box1 one">
+            <a href="">
+                <h3>
+                    <ion-icon name="bed-outline"></ion-icon>
+                    Stays
+                </h3>
+            </a>
+        </div>
+        <div class="box3 one">
+            <a href="#">
+                <h3>
+                    <ion-icon name="car-sport-outline"></ion-icon>
+                    Car rentals
+                </h3>
+            </a>
+        </div>
+        <div class="box4 one">
+            <a href="">
+                <h3>
+                    <ion-icon name="fast-food-outline"></ion-icon>
+                    Services
+                </h3>
+            </a>
+        </div>
+    </section>
+</header>
+
+
+<main>
+    <div class="main">
+        <h1>
+            Car hire for any kind of trip
+        </h1>
+        <h3>Great deals at great prices, from the biggest car hire companies</h3>
+    </div>
+
+    <form th:action="@{/car/get-all-car}" method="get">
+        <div class="main_section">
+            <div class="box6 boxes">
+
+                <ion-icon name="calendar-outline"></ion-icon>
+                <input type="date" name="startDate">
+            </div>
+
+            <div class="box7 boxes">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <input type="date" name="endDate">
+            </div>
+
+
+            <div class="box9">
+                <button type="submit" class="button-search">
+                    Search
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+</main>
+
+
+<div class="car-container">
+    <div class="card-car" th:each="car : ${cars}">
+        <br>
+        <h3 th:text="${car.name}"></h3>
+        <br>
+        <h5 th:text="${car.manufacturedDate}"></h5>
+        <h5 th:text="${car.number}"></h5>
+        <h5 th:text="${car.dailyPrice}"></h5>
+        <h5 th:text="${car.description}"></h5>
+
+<!--
+        <div class="collapse" sec:authorize="isAnonymous()">
+            <button id="toggleButton">Rent</button>
+            <br>
+            <p style="display: none;">siz roxatdan otmagasiz <a class="element-style" href="">roxhatdan otish </a></p>
+        </div>-->
+
+
+
+        <form sec:authorize="isAuthenticated()" th:action="@{/rental/rent}" method="post">
+            <input type="hidden" name="email" th:value="${#authentication.name}">
+            <input type="hidden" name="carId" th:value="${car.id}">
+            <input type="hidden" name="startDate" th:value="${param.get('startDate')}">
+            <input type="hidden" name="endDate" th:value="${param.get('endDate')}">
+            <button style="
+                        padding: revert;
+                        margin: 0 20px;
+                        background-color: limegreen;
+                        color: floralwhite;
+                        font-size: medium;
+                        "type="submit">Rent
+            </button>
+        </form>
+
+
+    </div>
+
+</div>
+
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+    document.getElementById('toggleButton').addEventListener('click', function() {
+        var content = document.querySelector('.collapse p');
+        content.style.display = (content.style.display === 'none') ? 'block' : 'none';
+    });
+
+</script>
+</html>
