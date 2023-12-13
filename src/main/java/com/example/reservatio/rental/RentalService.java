@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 @Service
 @RequiredArgsConstructor
 public class RentalService {
@@ -22,12 +24,24 @@ public class RentalService {
     private final ModelMapper modelMapper = new ModelMapper();
 
     @Transactional
-    public void create(RentCreateDto rentCreateDto) {
+    public String create(RentCreateDto rentCreateDto) {
+
+
         User user = userRepository.findUserByEmail(rentCreateDto.getEmail()).get();
+
+        if (user.getFirstName() == null && user.getLastName() == null && user.getPhoneNumber() == null && user.getPassportNumber() == null)  {
+            System.out.println("User malumolari to´liq emas");
+            return "rental/full-reg/"+user.getId();
+        }
+
         Car car = carRepository.findById(rentCreateDto.getCarId()).get();
         Rental rent = new Rental(null, user, car, rentCreateDto.getStartDate(), rentCreateDto.getEndDate());
         rentalRepository.save(rent);
+
+        return "";
+
     }
+
 
     // todo exception add
 
@@ -38,6 +52,7 @@ public class RentalService {
         System.out.println(map);
         return map;
     }
+
 
     // todo exception add
 

@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org"
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
     <title>Document</title>
 </head>
+<style>
+    .toggleButton.active ~ p {
+        display: block !important;
+    }
+</style>
 <body>
 <header>
     <div class="header">
@@ -18,7 +24,7 @@
             <a href="#"><h4>UZS</h4></a>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjLRbv4_WaVJc6mTORuadcHDIqfmU4ysxROsDgDPlSg&s"
                  alt=""/>
-            <a href="">
+            <a href="" class="header-icon-link">
                 <ion-icon name="help-circle-outline"></ion-icon>
             </a>
             <a href="#"><h4>List your property</h4></a>
@@ -31,24 +37,24 @@
     </div>
 
     <section class="section">
-        <div class="box1 one">
-            <a href="">
+        <div class="box1-one">
+            <a href="/">
                 <h3>
                     <ion-icon name="bed-outline"></ion-icon>
                     Stays
                 </h3>
             </a>
         </div>
-        <div class="box3 one">
-            <a href="#">
+        <div class="box1-one">
+            <a href="/car/car-home">
                 <h3>
                     <ion-icon name="car-sport-outline"></ion-icon>
                     Car rentals
                 </h3>
             </a>
         </div>
-        <div class="box4 one">
-            <a href="">
+        <div class="box1-one">
+            <a href="#">
                 <h3>
                     <ion-icon name="fast-food-outline"></ion-icon>
                     Services
@@ -58,59 +64,41 @@
     </section>
 </header>
 
-
 <main>
     <div class="main">
-        <h1>
-            Car hire for any kind of trip
-        </h1>
-        <h3>Great deals at great prices, from the biggest car hire companies</h3>
+        <h1>Car hire for any kind of trip</h1>
+        <h3>
+            Great deals at great prices, from the biggest car hire companies
+        </h3>
     </div>
 
-    <form th:action="@{/car/get-all-car}" method="get">
-        <div class="main_section">
-            <div class="box6 boxes">
-
-                <ion-icon name="calendar-outline"></ion-icon>
-                <input type="date" name="startDate">
-            </div>
-
-            <div class="box7 boxes">
-                <ion-icon name="calendar-outline"></ion-icon>
-                <input type="date" name="endDate">
-            </div>
-
-
-            <div class="box9">
-                <button type="submit" class="button-search">
-                    Search
-                </button>
-
-            </div>
+    <form th:action="@{/car/get-all-car}" method="get" class="search-form">
+        <div class="center-form">
+                <input class="input" type="date" name="startDate">
+                <input class="input" type="date" name="endDate">
+                <button type="submit" class="btn secondary">Search</button>
         </div>
     </form>
-
 </main>
-
 
 <div class="car-container">
     <div class="card-car" th:each="car : ${cars}">
-        <br>
+<!--        <img th:src="${car.image}" alt="img" height="100px" width="200px">-->
+        <br/>
         <h3 th:text="${car.name}"></h3>
-        <br>
+        <br/>
         <h5 th:text="${car.manufacturedDate}"></h5>
         <h5 th:text="${car.number}"></h5>
         <h5 th:text="${car.dailyPrice}"></h5>
         <h5 th:text="${car.description}"></h5>
 
-<!--
         <div class="collapse" sec:authorize="isAnonymous()">
-            <button id="toggleButton">Rent</button>
-            <br>
-            <p style="display: none;">siz roxatdan otmagasiz <a class="element-style" href="">roxhatdan otish </a></p>
-        </div>-->
-
-
+            <button class="toggleButton">Rent</button>
+            <p style="display: none">
+                siz roxatdan otmagasiz
+                <a class="element-style" href="">roxhatdan otish </a>
+            </p>
+        </div>
 
         <form sec:authorize="isAuthenticated()" th:action="@{/rental/rent}" method="post">
             <input type="hidden" name="email" th:value="${#authentication.name}">
@@ -123,26 +111,35 @@
                         background-color: limegreen;
                         color: floralwhite;
                         font-size: medium;
-                        "type="submit">Rent
+                        " type="submit">Rent
             </button>
         </form>
-
-
     </div>
-
 </div>
-
-
 </body>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+<script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
 
 <script>
-    document.getElementById('toggleButton').addEventListener('click', function() {
-        var content = document.querySelector('.collapse p');
-        content.style.display = (content.style.display === 'none') ? 'block' : 'none';
-    });
 
+    function addRemoveActiveClass() {
+        const toggleButtons = document.getElementsByClassName("toggleButton");
+
+        const toggleButtonsArray = Array.from(toggleButtons);
+
+        toggleButtonsArray.forEach((button) => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("active");
+            });
+        });
+    }
+
+    addRemoveActiveClass();
 </script>
 </html>

@@ -17,6 +17,10 @@ header {
     padding: 10px 150px;
 }
 
+.header-icon-link{
+    margin-top: 10px;
+}
+
 .header_links {
     display: flex;
     align-items: center;
@@ -26,6 +30,7 @@ header {
 .header_links h4 {
     color: aliceblue;
     font-weight: 500;
+    margin-top: 10px;
 }
 
 a {
@@ -78,15 +83,16 @@ li {
 
 h3 {
     color: aliceblue;
+    margin-top: 7px;
 }
 
 .main {
-    padding: 80px 150px;
+    padding: 60px 130px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     background-color: #003b95;
-
+    font-family: Avenir Nex, fantasy ;
 }
 
 h1 {
@@ -99,10 +105,25 @@ p {
     font-size: 30px;
 }
 
+.box1-one{
+    border: 2px solid white;
+    height: 40px;
+    width: 12%;
+    border-radius: 999px;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.box1-one:hover{
+    background-color: rgba(0,108,228,0.24);
+
+}
+
 .main_section {
     display: flex;
     align-items: center;
-    padding: 0px 130px;
+    padding: 0 130px;
     transform: translateY(-20px);
 }
 
@@ -116,7 +137,7 @@ p {
     height: 42px;
 }
 
-.box9 {
+.button-search {
     width: 100px;
     border-radius: 5px;
     text-align: center;
@@ -131,6 +152,7 @@ p {
     width: 30px;
     height: 30px;
     border-radius: 100%;
+    margin-top: 9px;
 }
 
 .header_links ion-icon {
@@ -168,7 +190,7 @@ element.style {
 
 .main_section input {
     width: 100%;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .button-search {
@@ -270,3 +292,54 @@ p {
     background-color: #4d84e2;
 }
 
+.center-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.input{
+    padding: 5px;
+    border-radius: 2px;
+    height: 35px;
+    border: 3px solid #febb02;
+}
+
+
+.input-select{
+    padding: 5px;
+    border-radius: 2px;
+    height: 46px;
+    border: 3px solid #febb02;
+}
+
+.btn {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 46px;
+    width: 100px;
+}
+
+.secondary{
+    background: #006ce4;
+    color:white ;
+}
+
+.search-input{
+    border: none;
+}
+
+
+
+.ionicon{
+    width: 25px;
+}
+
+
+.box9{
+    background: #8de02c;
+}
