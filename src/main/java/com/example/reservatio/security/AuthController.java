@@ -23,6 +23,11 @@ public class AuthController {
         return "admin/admin";
     }
 
+    @GetMapping("/sign-out")
+    public String signOut(){
+        return "index";
+    }
+
 
 
 }

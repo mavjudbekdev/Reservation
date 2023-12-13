@@ -269,3 +269,9 @@ a:hover {
 {
     color: black;
 }
+
+.full-reg-text{
+    color: #f91212;
+    text-align: center;
+    margin-top: 70px
+}

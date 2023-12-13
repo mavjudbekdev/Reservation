@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
-<body>
-    <h1>successful creation</h1>
+<body style="margin: 0 90px">
+<header>
+    <div class="header">
+        <div class="header_name">
+            <a href="http://localhost:8080/auth/admin"><h1>Booking.com</h1></a>
+        </div>
+
+        <div class="header_links">
+            <a href="#"><h4>UZS</h4></a>
+            <a href="#"><h4>help</h4></a>
+            <a href="">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+
+            <a class="sign" href="/">BACK TO HOME</a>
+        </div>
+    </div>
+
+</header>
+
+    <h1>Created successfully</h1>
+
 </body>
 </html>

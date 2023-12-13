@@ -18,4 +18,5 @@ public class RentCreateDto {
     private LocalDate startDate;
 
     private LocalDate endDate;
+
 }

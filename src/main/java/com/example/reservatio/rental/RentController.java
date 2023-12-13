@@ -4,12 +4,11 @@ import com.example.reservatio.car.dto.CarCreateDto;
 import com.example.reservatio.rental.dto.RentCreateDto;
 import com.example.reservatio.user.UserService;
 import com.example.reservatio.user.dto.UserFullRegisterDto;
+import com.example.reservatio.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -22,12 +21,18 @@ public class RentController {
     private final RentalService rentalService;
     private final UserService userService;
 
+
     @PostMapping("/rent")
     public String createRent(@ModelAttribute RentCreateDto rentCreateDto, Model model) {
 
-        System.out.println(rentCreateDto);
+        String s = rentalService.create(rentCreateDto);
 
-        rentalService.create(rentCreateDto);
+        if(!s.isEmpty()){
+
+            return "redirect:/rental/full-reg";
+
+        }
+
 
         CarCreateDto cars = rentalService.getCarById(rentCreateDto.getCarId());
 
@@ -46,10 +51,22 @@ public class RentController {
         return "rent/rent-create";
     }
 
-   /* @PostMapping("/full-reg")
-    public String fullRegistration(@ModelAttribute UserFullRegisterDto fullRegisterDto){
-        userService.fullRegister(fullRegisterDto);
+
+    @PostMapping("/full-reg")
+    public String fullRegistration(@ModelAttribute UserFullRegisterDto fullRegisterDto) {
+        User user = userService.currentUser();
+        userService.fullRegister(fullRegisterDto,user.getId());
+
         return "success";
-    }*/
+    }
+
+
+    @GetMapping("/full-reg")
+    public String fullRegPage() {
+
+        return "car/full-reg";
+    }
 
 }
+
+
