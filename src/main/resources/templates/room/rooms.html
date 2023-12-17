@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="header_name">
+            <a href="/"><h1>Booking.com</h1></a>
+        </div>
+
+        <div class="header_links">
+            <a href="#"><h4>UZS</h4></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjLRbv4_WaVJc6mTORuadcHDIqfmU4ysxROsDgDPlSg&s"
+                 alt=""/>
+            <a href="" class="header-icon-link">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+            <a href="#"><h4>List your property</h4></a>
+            <a class="register" sec:authorize="isAnonymous()" href="/auth/sign-up">Register</a>
+            <a class="sign" sec:authorize="isAnonymous()" href="/auth/sign-in">Sign in </a>
+
+            <a class="sign" sec:authorize="isAuthenticated()" th:href="@{/auth/user-info}">Your account</a>
+            <a class="sign" href="/auth/sign-out" sec:authorize="isAuthenticated()">Log out</a>
+
+        </div>
+    </div>
+
+</header>
+
+
+<div th:if="${rooms} != null" class="container-see-hotel">
+    <div class="card-see-hotel" th:each="room : ${rooms}">
+        <h1 th:text="${room.number}"></h1>
+        <form th:action="@{/book
+                            (roomId = ${room.id},
+                            startDate=${param.get('startDate')},
+                            endDate=${param.get('endDate')})}" th:method="post">
+            <button class="btn" type="submit"> Book now</button>
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -19,4 +19,10 @@ public class HotelModelMapper {
     public Hotel toEntity(HotelCreateDto hotelCreateDto){
         return modelMapper.map(hotelCreateDto,Hotel.class);
     }
+
+    public HotelResponseDto toResponseDtoAdmin(Hotel hotel) {
+        return modelMapper.map(hotel,HotelResponseDto.class);
+    }
+
 }
+

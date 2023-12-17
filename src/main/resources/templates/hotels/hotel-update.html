@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/update.css}">
+</head>
+<body>
+<div class="header container">
+    <h1 class="logo">Booking.com</h1>
+    <div></div>
+
+</div>
+
+<div class="center-form">
+    <form class="search-form" th:action="@{/hotel}" th:method="put">
+        <select class="input" name="city">
+            <option th:each="cityName: ${T(com.example.reservatio.stays.hotel.address.Region).values()}"
+                    th:text="${cityName}"
+                    th:value="${cityName}"
+                    th:selected="${cityName == hotel.region}"
+            ></option>
+        </select>
+        <input class="input" type="text" name="name" th:value="${hotel.name}">
+        <button type="submit" class="btn secondary">Update hotel</button>
+    </form>
+</div>
+
+
+<div class="center-form">
+    <form class="search-form" th:action="@{/super/createRoom}" th:method="post">
+        <input class="input" type="number" name="number" placeholder="room number">
+        <input class="input" type="number" name="roomCount" placeholder="room count">
+        <input type="hidden" name="hotelId" th:value="${hotel.id}">
+        <button type="submit" class="btn secondary">Add room</button>
+    </form>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Room id</th>
+            <th>Room number</th>
+            <th>Room Count</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="room: ${hotel.getRooms()}">
+            <td th:text="${room.id}"></td>
+            <td th:text="${room.number}"></td>
+            <td th:text="${room.roomCount}"></td>
+            <td>
+                <form th:action="@{/super/{roomId}(roomId=${room.id})}" th:method="DELETE">
+                    <button type="submit" class="btn-delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>

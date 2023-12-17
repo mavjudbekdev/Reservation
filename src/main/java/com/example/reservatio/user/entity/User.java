@@ -1,5 +1,6 @@
 package com.example.reservatio.user.entity;
 
+import com.example.reservatio.book.entity.Book;
 import com.example.reservatio.car.entity.Car;
 import com.example.reservatio.rental.entity.Rental;
 import com.example.reservatio.role.Role;
@@ -47,6 +48,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<Car> cars;
+
+    @OneToMany(mappedBy = "user")
+    private List<Book> books ;
 
 
 
