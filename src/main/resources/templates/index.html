@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="https://www.thymeleaf.org"
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,8 @@
 
         <div class="header_links">
             <a href="#"><h4>UZS</h4></a>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjLRbv4_WaVJc6mTORuadcHDIqfmU4ysxROsDgDPlSg&s" alt="" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjLRbv4_WaVJc6mTORuadcHDIqfmU4ysxROsDgDPlSg&s"
+                 alt=""/>
             <a href="" class="header-icon-link">
                 <ion-icon name="help-circle-outline"></ion-icon>
             </a>
@@ -23,9 +24,8 @@
             <a class="register" sec:authorize="isAnonymous()" href="/auth/sign-up">Register</a>
             <a class="sign" sec:authorize="isAnonymous()" href="/auth/sign-in">Sign in </a>
 
-            <a class="sign" sec:authorize="isAuthenticated()"  th:href="@{/auth/user-info}">Your account</a>
-            <a class="sign" href="/auth/sign-out" sec:authorize="isAuthenticated()" >Log out</a>
-
+            <a class="sign" sec:authorize="isAuthenticated()" th:href="@{/auth/user-info}">Your account</a>
+            <a class="sign" href="/auth/sign-out" sec:authorize="isAuthenticated()">Log out</a>
 
         </div>
     </div>
@@ -33,17 +33,26 @@
     <section class="section">
         <div class="box1-one">
             <a href="/">
-                <h3><ion-icon name="bed-outline"></ion-icon> Stays</h3>
+                <h3>
+                    <ion-icon name="bed-outline"></ion-icon>
+                    Stays
+                </h3>
             </a>
         </div>
         <div class="box1-one">
             <a href="/car/car-home">
-                <h3><ion-icon name="car-sport-outline"></ion-icon> Car rentals</h3>
+                <h3>
+                    <ion-icon name="car-sport-outline"></ion-icon>
+                    Car rentals
+                </h3>
             </a>
         </div>
         <div class="box1-one">
             <a href="">
-                <h3><ion-icon name="fast-food-outline"></ion-icon> Services</h3>
+                <h3>
+                    <ion-icon name="fast-food-outline"></ion-icon>
+                    Services
+                </h3>
             </a>
         </div>
     </section>
@@ -58,27 +67,32 @@
     </div>
 
     <div class="center-form">
-        <form class="search-form" method="get">
-            <select class="input-select" name="">
+        <form class="search-form" th:action="@{/hotel-all}" method="get">
+            <select class="input-select" name="region">
                 <option th:each="cityName: ${T(com.example.reservatio.stays.hotel.address.Region).values()}"
                         th:text="${cityName}"
                         th:value="${cityName}"
                 ></option>
             </select>
 
-            <input class="input" type="datetime-local">
-            <input class="input" type="datetime-local">
-            <input class="input" type="number">
+            <input class="input" name="startDate" type="datetime-local">
+            <input class="input" name="endDate" type="datetime-local">
+            <input class="input" name="roomCount" type="number">
             <button type="submit" class="btn secondary">Search</button>
         </form>
     </div>
 
 </main>
 
-<div>
-    <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci aliquam consequuntur corporis, cum dicta dolores ea eos ex fugit harum minus nostrum quasi quos ratione repudiandae sunt ut!</p>
+<div th:if="${hotels} != null" class="container-see-hotel">
+    <div class="card-see-hotel" th:each="hotel : ${hotels}">
+        <h1 th:text="${hotel.name}"></h1>
+        <a th:href="@{hotel-all/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},
+        endDate=${param.get('endDate')},roomCount=${param.get('roomCount')})}">
+            <button class="btn secondary">See Room</button>
+        </a>
     </div>
+
 </div>
 
 <footer></footer>
@@ -87,3 +101,8 @@
 </body>
 </html>
 
+
+
+<!--      <div class="card-img">
+          <img th:src="@{/img/{fileName}(fileName=${hotel.fileName})}" alt="img">
+      </div>-->

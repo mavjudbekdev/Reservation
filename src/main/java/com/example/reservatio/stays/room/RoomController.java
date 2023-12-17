@@ -13,14 +13,15 @@ public class RoomController {
     private final RoomService roomService;
 
     @PostMapping
-    public String roomCreate(@ModelAttribute RoomCreateDto roomCreateDto) {
+    public String createRoom(@ModelAttribute RoomCreateDto roomCreateDto){
         roomService.create(roomCreateDto);
-        return "redirect:/hotel/%id/update";
+        return "redirect:/hotels/%d/update".formatted(roomCreateDto.getHotelId());
     }
 
+
     @DeleteMapping("/{id}")
-    public String deleteRoom(@PathVariable Integer id) {
+    public String deleteRoom(@PathVariable Integer id){
         Integer hotelId = roomService.delete(id);
-        return "redirect:/hotel/%d/update".formatted(hotelId);
+        return "redirect:/hotels/%d/update".formatted(hotelId);
     }
 }

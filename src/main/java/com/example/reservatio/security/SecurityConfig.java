@@ -13,7 +13,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final String[] openPathUrl = {"/", "/car", "/car/car-home", "/car/get-all-car", "/auth/sign-in", "/auth/sign-up", "/css/**", "/image/**"};
+    private final String[] openPathUrl = {"/", "/car", "/car/car-home", "/car/get-all-car", "/auth/sign-in",
+            "/hotel-all/**", "/auth/sign-up", "/css/**", "/image/**",
+            "/hotel" ,"/hotel/hotels", "/img/**"};
 
     private final AuthenticationHandler successHandler;
 

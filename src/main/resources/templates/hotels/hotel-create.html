@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/car-create.css}">
+
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="header_name">
+            <a href="http://localhost:8080/auth/admin"><h1>Booking.com</h1></a>
+        </div>
+
+        <div class="header_links">
+            <a href="#"><h4>UZS</h4></a>
+            <a href="#"><h4>help</h4></a>
+            <a href="">
+                <ion-icon name="help-circle-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="center-form">
+    <form class="search-form" th:action="@{/super/hotel-create}" method="post" enctype="multipart/form-data">
+        <select class="input-select" name="region">
+            <option th:each="cityName: ${T(com.example.reservatio.stays.hotel.address.Region).values()}"
+                    th:text="${cityName}"
+                    th:value="${cityName}"
+            ></option>
+        </select>
+        <input class="input" type="text" name="name">
+        <input class="input" type="file" name="picture">
+        <button type="submit" class="btn secondary">Create Hotel</button>
+    </form>
+</div>
+
+
+</body>
+</html> 

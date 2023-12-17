@@ -343,3 +343,32 @@ p {
 .box9{
     background: #8de02c;
 }
+
+.container-see-hotel{
+        padding-left: 10%;
+        padding-right: 10%;;
+}
+
+.card-see-hotel{
+    width: 100%;
+    height: 200px;
+    margin: 20px 0;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+}
+
+
+
+.card-img {
+    height: 100%;
+    width: 840px;
+}
+
+.card-img img{
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+
+

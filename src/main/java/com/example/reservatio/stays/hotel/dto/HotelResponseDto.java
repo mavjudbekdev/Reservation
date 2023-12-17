@@ -13,12 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class HotelResponseDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @Enumerated(EnumType.STRING)
     private Region region;
-    @OneToMany(mappedBy =  ("hotel"))
     private List<Room> rooms;
+    private String fileName;
 }
