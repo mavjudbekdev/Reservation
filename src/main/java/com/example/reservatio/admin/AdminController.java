@@ -20,7 +20,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping(value = "/super",method = RequestMethod.POST)
+@RequestMapping("/super")
 @RequiredArgsConstructor
 public class AdminController {
 
@@ -84,17 +84,19 @@ public class AdminController {
 
 
     @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
-    @PostMapping("(createRoom")
-    public String createRoom(@ModelAttribute RoomCreateDto roomCreateDto) {
+    @PostMapping("/createRoom")
+    public String createRooms(@ModelAttribute RoomCreateDto roomCreateDto) {
         roomService.create(roomCreateDto);
-        return "redirect:/hotels/%d/hotel-update".formatted(roomCreateDto.getHotelId());
+        return "redirect:/super/%d/update".formatted(roomCreateDto.getHotelId());
     }
+
+
 
     @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
     @DeleteMapping("/{id}")
     public String deleteRoom(@PathVariable Integer id) {
         Integer hotelId = roomService.delete(id);
-        return "redirect:/hotels/%d/update".formatted(hotelId);
+        return "redirect:/super/%d/update".formatted(hotelId);
     }
 
 

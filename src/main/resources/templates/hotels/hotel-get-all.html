@@ -16,6 +16,7 @@
         <div class="header_links">
             <a href="#"><h4>UZS</h4></a>
             <a href="#"><h4>help</h4></a>
+            <a href="">all hotel</a>
             <a href="">
                 <ion-icon name="help-circle-outline"></ion-icon>
             </a>
@@ -43,6 +44,40 @@
 
 </main>
 
+<div class="hotel-container">
+    <table>
+        <tr>
+            <th>Hotel name</th>
+            <th>Hotel region</th>
+            <th>Action</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="hotel: ${admin}">
+            <td th:text="${hotel.name}"></td>
+            <td th:text="${hotel.region}"></td>
+            <td>
+                <a th:href="@{super/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},endDate=${param.get('endDate')},roomCount=${param.get('roomCount')})}">
+                    <button class="hotel-btn-delete">See Room</button>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{super/{hotelId}/update(hotelId=${hotel.id})}">
+                    <button class="hotel-btn-delete">Edit Hotel</button>
+                </a>
+            </td>
+
+        </tr>
+
+    </table>
+</div>
+
+</div>
+</body>
+</html>
+<!--
+
 <div th:if="${admin} != null" class="container-see-hotel">
     <div class="card-see-hotel" th:each="hotel : ${admin}">
         <h1 th:text="${hotel.name}"></h1>
@@ -54,8 +89,4 @@
         <a th:href="@{super/{hotelId}/update(hotelId=${hotel.id})}">
             <button class="btn secondary">Edit Hotel</button>
         </a>
-    </div>
-
-</div>
-</body>
-</html>
+    </div>-->

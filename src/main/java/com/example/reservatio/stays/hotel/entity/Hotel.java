@@ -24,4 +24,7 @@ public class Hotel {
     private Region region;
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
+    private String fileName;
+    @Column(length = 500)
+    private String image;
 }

@@ -24,6 +24,7 @@ public class CarService {
         carRepository.save(car);
     }
 
+    @Transactional
     public List<Car> findAvailableCars(LocalDate startDate, LocalDate endDate) {
         if (startDate == null || endDate == null || endDate.isBefore(startDate)){
             return Collections.emptyList();

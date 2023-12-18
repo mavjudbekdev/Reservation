@@ -17,7 +17,7 @@ header {
     padding: 10px 150px;
 }
 
-.header-icon-link{
+.header-icon-link {
     margin-top: 10px;
 }
 
@@ -81,10 +81,13 @@ li {
     gap: 60px;
 }
 
-h3 {
-    color: aliceblue;
+.car-container-text{
+
+    margin-left: 28px;
+    color: #343030;
     margin-top: 7px;
 }
+
 
 .main {
     padding: 60px 130px;
@@ -92,7 +95,7 @@ h3 {
     flex-direction: column;
     gap: 15px;
     background-color: #003b95;
-    font-family: Avenir Nex, fantasy ;
+    font-family: Avenir Nex, fantasy;
 }
 
 h1 {
@@ -105,18 +108,21 @@ p {
     font-size: 30px;
 }
 
-.box1-one{
+.box1-one {
     border: 2px solid white;
     height: 40px;
     width: 12%;
     border-radius: 999px;
     text-align: center;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
-.box1-one:hover{
-    background-color: rgba(0,108,228,0.24);
+.box1-one:hover {
+    background-color: rgba(0, 108, 228, 0.24);
 
 }
 
@@ -262,16 +268,22 @@ p {
 
 .car-container {
     padding-left: 10%;
-    padding-right: 10%;;
+    padding-right: 10%;
+    flex-wrap:wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
 
 }
 
-.card-car{
-    width: 100%;
-    height: 200px;
+.card-car {
+    width: 30%;
+    height: 410px;
     margin: 20px 0;
-    border: 1px solid #c9c9c9;
+    border: 1px solid #aba9a9;
     border-radius: 10px;
+    background-color: #dbddde;
 }
 
 .collapse {
@@ -285,14 +297,13 @@ p {
 }
 
 
-
 .element-style {
     color: black;
     display: block;
     background-color: #4d84e2;
 }
 
-.center-form{
+.center-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -300,7 +311,7 @@ p {
     margin-top: 20px;
 }
 
-.input{
+.input {
     padding: 5px;
     border-radius: 2px;
     height: 35px;
@@ -308,7 +319,7 @@ p {
 }
 
 
-.input-select{
+.input-select {
     padding: 5px;
     border-radius: 2px;
     height: 46px;
@@ -324,49 +335,137 @@ p {
     width: 100px;
 }
 
-.secondary{
+.secondary {
     background: #006ce4;
-    color:white ;
+    color: white;
 }
 
-.search-input{
+.search-input {
     border: none;
 }
 
 
-
-.ionicon{
+.ionicon {
     width: 25px;
 }
 
 
-.box9{
+.box9 {
     background: #8de02c;
 }
 
-.container-see-hotel{
-        padding-left: 10%;
-        padding-right: 10%;;
+.container-see-hotel {
+    padding-left: 10%;
+    padding-right: 10%;
+    flex-wrap:wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
 }
 
-.card-see-hotel{
-    width: 100%;
-    height: 200px;
+.card-see-hotel {
+    width: 30%;
+    height: 315px;
     margin: 20px 0;
-    border: 1px solid #c9c9c9;
+    border: 1px solid #757575;
     border-radius: 10px;
+
+
+}
+
+
+.car-container-img{
+    height: 190px;
+    width: 305px;
+    object-fit: cover;
+    margin-top: 25px;
+    border-radius: 11px;
+}
+
+
+.car-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.toggleButton{
+    background-color: #006ce4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 25px;
+    margin-top: 13px;
+}
+
+.toggleButton:hover{
+    background-color: #003b95;
+}
+
+
+.toggleButton-two:hover{
+    background-color: #003b95;
 }
 
 
 
-.card-img {
-    height: 100%;
-    width: 840px;
+.hotel-container{
+    padding-left: 10%;
+    padding-right: 10%;;
 }
 
-.card-img img{
-    height: 100%;
-    border-radius: 10px;
+
+.hotel-btn-delete {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 35px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    background-color: #006ce4;
+    color: white;
+}
+
+tr:hover{
+    background-color: #006ce4;
+    color: white;
+}
+
+.btn:hover.secondary {
+    background: #006ce4;
+}
+
+
+.hotel-btn-delete:hover {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 35px;
+    background: #febb02;
 }
 
 

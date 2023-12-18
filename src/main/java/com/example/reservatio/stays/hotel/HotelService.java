@@ -33,11 +33,6 @@ public class HotelService {
     public void create(@ModelAttribute HotelCreateDto hotelCreateDto) throws IOException {
 
         Hotel hotel = hotelModelMapper.toEntity(hotelCreateDto);
-        MultipartFile picture = hotelCreateDto.getPicture();
-        String fileName = UUID.randomUUID() + picture.getOriginalFilename();
-        Path path  = Path.of("src/main/resources/static/img/" + fileName);
-        picture.transferTo(path);
-        hotel.setFileName(fileName);
         hotelRepository.save(hotel);
     }
 
