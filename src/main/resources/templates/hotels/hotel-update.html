@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/update.css}">
 </head>
 <body>
+
 <div class="header container">
     <h1 class="logo">Booking.com</h1>
     <div></div>
@@ -28,11 +29,11 @@
 
 
 <div class="center-form">
-    <form class="search-form" th:action="@{/super/createRoom}" th:method="post">
+    <form class="search-form" th:action="@{/super/createRoom}" method="post">
         <input class="input" type="number" name="number" placeholder="room number">
         <input class="input" type="number" name="roomCount" placeholder="room count">
         <input type="hidden" name="hotelId" th:value="${hotel.id}">
-        <button type="submit" class="btn secondary">Add room</button>
+        <button  class="btn secondary">Add room</button>
     </form>
 </div>
 

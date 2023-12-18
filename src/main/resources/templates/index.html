@@ -63,7 +63,7 @@
 <main>
     <div class="main">
         <h1>Find your next stay</h1>
-        <h3>Find exclusive Genius rewards in every corner of the world!</h3>
+        <h3 style="color: white">Find exclusive Genius rewards in every corner of the world!</h3>
     </div>
 
     <div class="center-form">
@@ -86,10 +86,16 @@
 
 <div th:if="${hotels} != null" class="container-see-hotel">
     <div class="card-see-hotel" th:each="hotel : ${hotels}">
-        <h1 th:text="${hotel.name}"></h1>
+
+        <div class="card-img">
+            <img th:src="${hotel.image}" alt="img" class="car-container-img" height="100px" width="200px">
+        </div>
+
+      <h1 th:text="${hotel.name}" class="hotel-name"></h1>
+        <h3 th:text="${hotel.region} " class="hotel-name"></h3>
         <a th:href="@{hotel-all/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},
         endDate=${param.get('endDate')},roomCount=${param.get('roomCount')})}">
-            <button class="btn secondary">See Room</button>
+            <button class="btn secondary hotel-button">See Room</button>
         </a>
     </div>
 
@@ -103,6 +109,3 @@
 
 
 
-<!--      <div class="card-img">
-          <img th:src="@{/img/{fileName}(fileName=${hotel.fileName})}" alt="img">
-      </div>-->

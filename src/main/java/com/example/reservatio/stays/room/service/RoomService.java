@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 
 @Service
-
 @RequiredArgsConstructor
 public class RoomService {
 
@@ -33,6 +32,7 @@ public class RoomService {
         roomRepository.save(room);
     }
 
+    @Transactional
     public Integer delete(Integer id) {
         Integer hotelId = roomRepository.findById(id)
                 .orElseThrow()

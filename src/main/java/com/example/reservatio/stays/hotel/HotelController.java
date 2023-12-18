@@ -27,6 +27,7 @@ public class HotelController {
     }
 
 
+
     @GetMapping("/{id}/rooms")
     public String getHotelRooms(@PathVariable Integer id,
                                 @RequestParam Integer roomCount, Model model,
