@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -75,6 +77,8 @@
                 ></option>
             </select>
 
+
+
             <input class="input" name="startDate" type="datetime-local">
             <input class="input" name="endDate" type="datetime-local">
             <input class="input" name="roomCount" type="number">
@@ -85,17 +89,18 @@
 </main>
 
 <div th:if="${hotels} != null" class="container-see-hotel">
-    <div class="card-see-hotel" th:each="hotel : ${hotels}">
-
-        <div class="card-img">
-            <img th:src="${hotel.image}" alt="img" class="car-container-img" height="100px" width="200px">
+    <div class="card-car" th:each="hotel : ${hotels}">
+        <div class="car-card-container">
+            <img th:src="${hotel.image}" alt="img" class="home-container-img">
         </div>
+        <br>
+      <h3 th:text="${'HOTEL - ' + hotel.name}" class="car-container-text"></h3>
+        <h5 th:text="${'REGION - ' + hotel.region} " class="car-container-text"></h5>
+        <h5> </h5>
 
-      <h1 th:text="${hotel.name}" class="hotel-name"></h1>
-        <h3 th:text="${hotel.region} " class="hotel-name"></h3>
         <a th:href="@{hotel-all/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},
         endDate=${param.get('endDate')},roomCount=${param.get('roomCount')})}">
-            <button class="btn secondary hotel-button">See Room</button>
+            <button class="toggleButton-hotel">See availability</button>
         </a>
     </div>
 

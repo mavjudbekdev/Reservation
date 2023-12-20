@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 
-    @Query("""
+    @Query(value = """
 
            select room
            from Room room

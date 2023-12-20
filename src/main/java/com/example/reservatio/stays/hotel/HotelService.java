@@ -1,7 +1,8 @@
 package com.example.reservatio.stays.hotel;
 
-import  com.example.reservatio.stays.hotel.dto.HotelCreateDto;
+import com.example.reservatio.stays.hotel.dto.HotelCreateDto;
 import com.example.reservatio.stays.hotel.dto.HotelResponseDto;
+import com.example.reservatio.stays.hotel.dto.HotelSearchDto;
 import com.example.reservatio.stays.hotel.entity.Hotel;
 import com.example.reservatio.stays.room.entity.Room;
 import com.example.reservatio.stays.room.repository.RoomRepository;
@@ -9,14 +10,11 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 
 @Service
@@ -38,13 +36,35 @@ public class HotelService {
 
 
     @Transactional
-    public List<HotelResponseDto> getAllHotels() {
-        List<Hotel> hotels = hotelRepository.findAll();
-        return hotels
-                .stream()
-                .map(hotelModelMapper::toResponseDto)
-                .toList();
+    public List<HotelResponseDto> getAllHotels(HotelSearchDto hotelSearchDto) {
+        String region = hotelSearchDto.getRegion();
+        LocalDateTime startDate = hotelSearchDto.getStartDate();
+        LocalDateTime endDate = hotelSearchDto.getEndDate();
+        Integer roomCount = hotelSearchDto.getRoomCount();
+
+
+        if (region == null) {
+            return Collections.emptyList();
+        }
+
+        return checkHotelData(region, startDate, endDate, roomCount);
+
     }
+
+    public List<HotelResponseDto> checkHotelData(String region, LocalDateTime startDate, LocalDateTime endDate, Integer roomCount) {
+        List<Hotel> all = hotelRepository.findAll();
+        ArrayList<Hotel> hotels = new ArrayList<>();
+        for (Hotel hotel : all) {
+            boolean isRegion = Objects.equals(hotel.getRegion().name(), region);
+            if (isRegion) {
+                hotels.add(hotel);
+            }
+        }
+
+        return hotels.stream().map(hotelModelMapper::toResponseDto).toList();
+
+    }
+
 
     @Transactional
     public HotelResponseDto getById(Integer id) {
@@ -56,7 +76,7 @@ public class HotelService {
 
     @Transactional
     public List<Room> getRooms(Integer id, Integer roomCount, LocalDateTime startDate, LocalDateTime endDate) {
-        return roomRepository.findAvailableRooms(id,roomCount, startDate, endDate);
+        return roomRepository.findAvailableRooms(id, roomCount, startDate, endDate);
     }
 
     @Transactional
@@ -69,7 +89,7 @@ public class HotelService {
 
     @Transactional
     public List<Room> getRoomsAdmin(Integer id, Integer roomCount, LocalDateTime startDate, LocalDateTime endDate) {
-        return roomRepository.findAvailableRooms(id,roomCount, startDate, endDate);
+        return roomRepository.findAvailableRooms(id, roomCount, startDate, endDate);
     }
 
     // todo add exceptions all methods

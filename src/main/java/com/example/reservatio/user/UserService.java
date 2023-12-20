@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 @Service
@@ -79,7 +80,18 @@ public class UserService implements UserDetailsService {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         UserDetails principal = (UserDetails) auth.getPrincipal();
         String username = principal.getUsername();
+
        return userRepository.findUserByEmail(username).orElseThrow(RuntimeException::new);
     }
 
+    public User userInfo() {
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        UserDetails principal = (UserDetails) auth.getPrincipal();
+        String username = principal.getUsername();
+        Optional<User> user = userRepository.findUserByEmail(username);
+
+        User getUser = user.get();
+
+        return getUser;
+    }
 }

@@ -30,6 +30,8 @@ public class User implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Role role;
 
     private String firstName;
@@ -44,12 +46,18 @@ public class User implements UserDetails {
     private LocalDateTime userUpdateAT;
 
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Rental> rents;
 
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Car> cars;
 
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Book> books ;
 
 

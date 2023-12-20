@@ -96,9 +96,8 @@
 
         <div class="collapse" sec:authorize="isAnonymous()">
             <button class="toggleButton">Rent</button>
-            <p style="display: none" class="">
-                siz roxatdan otmagasiz
-                <a class="element-style" href="">roxhatdan otish </a>
+            <p style="display: none" class="" id="info">
+                You are not registered, please register to make a reservation
             </p>
         </div>
 
@@ -140,18 +139,22 @@
 
 <script>
 
-    function addRemoveActiveClass() {
-        const toggleButtons = document.getElementsByClassName("toggleButton");
-
-        const toggleButtonsArray = Array.from(toggleButtons);
-
-        toggleButtonsArray.forEach((button) => {
-            button.addEventListener("click", () => {
-                button.classList.toggle("active");
-            });
-        });
+    function addRemoveActiveClass(button) {
+        button.classList.toggle("active");
     }
 
+    const toggleButtons = document.getElementsByClassName("toggleButton");
+    const toggleButtonsArray = Array.from(toggleButtons);
+
+    toggleButtonsArray.forEach((button) => {
+        button.addEventListener("click", function() {
+            addRemoveActiveClass(button);
+        });
+    });
+
+
+
     addRemoveActiveClass();
+
 </script>
 </html>
