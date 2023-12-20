@@ -3,9 +3,7 @@ package com.example.reservatio.rental.entity;
 import com.example.reservatio.car.entity.Car;
 import com.example.reservatio.user.entity.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -21,10 +19,14 @@ public class Rental {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "car_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Car car;
 
     private LocalDate startDate;

@@ -3,13 +3,13 @@ package com.example.reservatio.stays.hotel.entity;
 import com.example.reservatio.stays.hotel.address.Region;
 import com.example.reservatio.stays.room.entity.Room;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "hotel")
@@ -20,11 +20,19 @@ public class Hotel {
     private Integer id;
 
     private String name;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @Enumerated(EnumType.STRING)
     private Region region;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
+
     private String fileName;
+
     @Column(length = 500)
     private String image;
 }

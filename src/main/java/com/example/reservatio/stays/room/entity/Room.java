@@ -5,9 +5,7 @@ import com.example.reservatio.book.entity.Book;
 import com.example.reservatio.stays.hotel.entity.Hotel;
 import com.example.reservatio.user.entity.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -22,7 +20,10 @@ public class Room {
     private Integer id;
     private Integer number;
     private Integer roomCount;
+    private Integer roomDailyPrice;
     @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room")

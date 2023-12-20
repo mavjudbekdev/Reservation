@@ -284,23 +284,24 @@ p {
     border: 1px solid #aba9a9;
     border-radius: 10px;
     background-color: #dbddde;
+
 }
+
 
 .collapse {
     width: 200px;
 }
 
 .collapse p {
-    margin: 0;
     display: none;
     color: black;
+    margin-top: 23px;
 }
 
 
 .element-style {
     color: black;
     display: block;
-    background-color: #4d84e2;
 }
 
 .center-form {
@@ -366,11 +367,13 @@ p {
 }
 
 .card-see-hotel {
-    width: 30%;
-    height: 315px;
-    margin: 20px 0;
-    border: 1px solid #757575;
-    border-radius: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+    flex-wrap:wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
 
 
 }
@@ -381,6 +384,14 @@ p {
     width: 305px;
     object-fit: cover;
     margin-top: 25px;
+    border-radius: 11px;
+}
+
+.home-container-img{
+    height: 235px;
+    width: 326px;
+    object-fit: cover;
+    margin-top: 23px;
     border-radius: 11px;
 }
 
@@ -408,12 +419,27 @@ p {
     margin-top: 13px;
 }
 
+.toggleButton-hotel{
+    background-color: #006ce4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 25px;
+    margin-top: 13px;
+}
+
 .toggleButton:hover{
     background-color: #003b95;
 }
 
 
-.toggleButton-two:hover{
+.toggleButton-hotel:hover{
     background-color: #003b95;
 }
 

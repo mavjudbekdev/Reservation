@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rented Cars</title>
+</head>
+<body>
+<h1>Rented Cars</h1>
+<ul>
+    <li th:each="rental : ${userRentals}">
+        <span th:text="${rental.car.name}"></span> - <span th:text="${rental.startDate}"></span> to <span th:text="${rental.endDate}"></span>
+    </li>
+</ul>
+</body>
+</html>
