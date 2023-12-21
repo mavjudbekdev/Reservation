@@ -213,6 +213,17 @@ input[type="name"] {
 
 
 
+input[type="carNumber"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    justify-content: center;
+    display: flex;
+}
+
+
+
 input[type="number"] {
     width: 100%;
     padding: 8px;

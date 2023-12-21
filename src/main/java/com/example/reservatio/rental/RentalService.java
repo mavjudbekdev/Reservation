@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,10 +30,11 @@ public class RentalService {
 
         User user = userRepository.findUserByEmail(rentCreateDto.getEmail()).get();
 
-        if (user.getFirstName() == null && user.getLastName() == null && user.getPhoneNumber() == null && user.getPassportNumber() == null)  {
+        if (user.getFirstName() == null && user.getLastName() == null && user.getPhoneNumber() == null && user.getPassportNumber() == null && user.getCardNumber() == null) {
             System.out.println("User malumolari to´liq emas");
-            return "rental/full-reg/"+user.getId();
+            return "rental/full-reg/" + user.getId();
         }
+
 
         Car car = carRepository.findById(rentCreateDto.getCarId()).get();
         Rental rent = new Rental(null, user, car, rentCreateDto.getStartDate(), rentCreateDto.getEndDate());
@@ -42,9 +44,7 @@ public class RentalService {
 
     }
 
-
-    // todo exception add
-
+    @Transactional
     public CarCreateDto getCarById(Integer carId) {
         Car car = carRepository.findById(carId).get();
 
@@ -53,7 +53,18 @@ public class RentalService {
         return map;
     }
 
+    public void deleteByUserRent(Integer rentId) {
+        rentalRepository.deleteById(rentId);
+    }
 
-    // todo exception add
+    @Transactional
+    public List<Rental> getAllRentsByCarlId(Integer carId) {
+        Car car = carRepository.findById(carId).orElseThrow();
+        List<Rental> rents = car.getRents();
+        if (rents == null) {
+            return Collections.emptyList();
+        }
+        return rents;
+    }
 
 }

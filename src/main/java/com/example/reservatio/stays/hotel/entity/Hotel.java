@@ -20,6 +20,8 @@ public class Hotel {
     private Integer id;
 
     private String name;
+    @Column(unique = true)
+    private String phoneNumber;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -30,8 +32,6 @@ public class Hotel {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
-
-    private String fileName;
 
     @Column(length = 500)
     private String image;

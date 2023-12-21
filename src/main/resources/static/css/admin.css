@@ -430,21 +430,38 @@ body{
         color: #fff;
     }
 
-
-    /* Yangi dropdown stili */
+/*
     .navigation .hotel .dropdown {
-        display: none; /* Menyu yashirilgan bo'lishi kerak */
-        position: absolute; /* Mutlaq joylashish */
-        background-color: #fff; /* Arka fon rangi */
-        /* Boshqa ko'rinishlarni kerakligicha o'zgartiring */
+        display: none;
+        position: absolute;
+        background-color: #fff;
     }
 
-    /* Aktiv dropdown stili */
+
     .navigation .hotel.active .dropdown {
-        display: block; /* Menyu ko'rsatilishi kerak */
-    }
+        display: block;
+    }*/
 
 
-}    
+
+}
+
+.dropdownUl{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownNew{
+    display:none;
+}
+
+.navigation ul li:hover .dropdownNew{
+    display: block;
+}
+
+.navigation ul li:hover .role{
+    margin-top: 200px;
+}
+
  
 

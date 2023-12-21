@@ -29,12 +29,12 @@ public class Car {
 
     private Integer dailyPrice;
 
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car",cascade = CascadeType.REMOVE)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Rental> rents;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

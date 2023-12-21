@@ -1,0 +1,72 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    background-color: #888DBF;
+    color: white;
+}
+
+.books-button-update {
+    color: white;
+    display: flex;
+    width: 67px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: #25d483;
+    height: 35px;
+    border: none;
+    border-radius: 6px;
+    text-size-adjust: revert;
+}
+
+.books-button-delete {
+    color: white;
+    display: flex;
+    width: 67px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: #d35864;
+    border: none;
+    height: 35px;
+    border-radius: 6px;
+    text-size-adjust: revert;
+}
+
+
+.books-button-rent {
+    color: white;
+    display: flex;
+    width: 67px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: #3f73c1;
+    border: none;
+    height: 35px;
+    border-radius: 6px;
+    text-size-adjust: revert;
+}
+
+
+.books-button:hover {
+    background: #4CAF50;
+}
+
+.books-button-class {
+    justify-content: center;
+    align-items: center;
+}

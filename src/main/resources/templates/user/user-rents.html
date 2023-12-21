@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .books-button{
+            color: white;
+            display: flex;
+            border: none;
+            width: 138px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            background-color: #4CAF50;
+            height: 41px;
+            border-radius: 6px;
+            text-size-adjust: revert;
+        }
+
+        .books-button:hover{
+            background: #4CAF50;
+        }
+
+        .books-button-class{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<h1>User Books</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Car name</th>
+        <th>Car number</th>
+        <th>Car manufacturedDate</th>
+        <th>Car dailyPrice</th>
+        <th>Rent start date</th>
+        <th>Rent end date</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rent : ${userRents}">
+        <td th:text="${rent.car.name}"></td>
+        <td th:text="${rent.car.number}"></td>
+        <td th:text="${rent.car.manufacturedDate}"></td>
+        <td th:text="${rent.car.dailyPrice}"></td>
+
+        <td th:text="${rent.startDate}"></td>
+        <td th:text="${rent.endDate}"></td>
+
+        <td class="books-button-class">
+            <form th:action="@{/rental/deleteByUserRent}" th:method="delete">
+                <label>
+                    <input hidden="hidden" name="rentId" th:value="${rent.id}">
+                </label>
+                <button type="submit" class="books-button"> Delete </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

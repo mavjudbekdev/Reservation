@@ -31,4 +31,15 @@ public class CarService {
         }
         return carRepository.findAvailableCars(startDate, endDate);
     }
+
+    @Transactional
+    public List<Car> getCarsForAdmin() {
+        return carRepository.findAll();
+    }
+
+
+    @Transactional
+    public void deleteByCarId(Integer carId) {
+        carRepository.deleteById(carId);
+    }
 }

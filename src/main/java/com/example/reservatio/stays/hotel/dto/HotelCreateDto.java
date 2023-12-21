@@ -15,6 +15,6 @@ public class HotelCreateDto {
     private String name;
     @Column(length = 500)
     private String image;
-
+    private String phoneNumber;
 
 }
