@@ -96,6 +96,7 @@
         <br>
       <h3 th:text="${'HOTEL - ' + hotel.name}" class="car-container-text"></h3>
         <h5 th:text="${'REGION - ' + hotel.region} " class="car-container-text"></h5>
+        <h5 th:text="${'PHONE NUMBER - ' + hotel.phoneNumber} " class="car-container-text"></h5>
         <h5> </h5>
 
         <a th:href="@{hotel-all/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},

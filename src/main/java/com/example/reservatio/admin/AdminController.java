@@ -2,9 +2,11 @@ package com.example.reservatio.admin;
 
 import com.example.reservatio.car.CarService;
 import com.example.reservatio.car.dto.CarCreateDto;
+import com.example.reservatio.car.entity.Car;
 import com.example.reservatio.stays.hotel.HotelService;
 import com.example.reservatio.stays.hotel.dto.HotelCreateDto;
 import com.example.reservatio.stays.hotel.dto.HotelResponseDto;
+import com.example.reservatio.stays.hotel.entity.Hotel;
 import com.example.reservatio.stays.room.RoomCreateDto;
 import com.example.reservatio.stays.room.entity.Room;
 import com.example.reservatio.stays.room.service.RoomService;
@@ -35,6 +37,15 @@ public class AdminController {
         return "car/car-create";
     }
 
+    @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
+    @GetMapping("/cars")
+    public String getCars(Model model) {
+        List<Car> carsForAdmin = carService.getCarsForAdmin();
+        model.addAttribute("carsForAdmin",carsForAdmin);
+        return "admin/cars";
+    }
+
+
 
     @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
     @PostMapping("/create-car")
@@ -60,6 +71,14 @@ public class AdminController {
 
 
     @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
+    @GetMapping("/hotels")
+    public String getHotels(Model model) {
+        List<Hotel> hotelForAdmin = hotelService.getHotelForAdmin();
+        model.addAttribute("hotelForAdmin",hotelForAdmin);
+        return "admin/hotels";
+    }
+
+    @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
     @GetMapping("/hotel-create")
     public String createHotelPage() {
         return "hotels/hotel-create";
@@ -76,7 +95,8 @@ public class AdminController {
 
     @PreAuthorize(value = "hasAnyAuthority('ROLE_ADMIN','ROLE_SUPER_ADMIN')")
     @GetMapping("/hotel-get-all")
-    public String getAllHotelsPage(){
+    public String getAllHotelsPage()
+    {
         return "hotels/hotel-get-all";
     }
 

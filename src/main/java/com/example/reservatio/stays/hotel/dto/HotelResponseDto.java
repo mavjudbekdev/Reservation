@@ -18,4 +18,5 @@ public class HotelResponseDto {
     private Region region;
     private List<Room> rooms;
     private String image;
+    private String phoneNumber;
 }

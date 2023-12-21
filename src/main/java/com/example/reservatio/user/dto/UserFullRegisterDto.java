@@ -13,5 +13,6 @@ public class UserFullRegisterDto {
     private String lastName;
     private String phoneNumber;
     private String passportNumber;
+    private String cardNumber;
 
 }

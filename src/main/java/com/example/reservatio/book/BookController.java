@@ -1,10 +1,10 @@
 package com.example.reservatio.book;
 
+import com.example.reservatio.user.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/book")
@@ -15,8 +15,14 @@ public class BookController {
 
 
     @PostMapping
-    public String createBook(@ModelAttribute BookCreateDto bookCreateDto){
-        bookService.create(bookCreateDto);
+    public String createBook(@AuthenticationPrincipal User user, @ModelAttribute BookCreateDto bookCreateDto){
+        bookService.create(bookCreateDto, user);
         return "redirect:/";
+    }
+
+    @GetMapping("/deleteByBook")
+    public String deleteBookById(@RequestParam("bookId") Integer bookId) {
+        bookService.deleteBookById(bookId);
+        return "redirect:/auth/books";
     }
 }

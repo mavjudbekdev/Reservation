@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 @Service
@@ -56,8 +57,13 @@ public class HotelService {
         ArrayList<Hotel> hotels = new ArrayList<>();
         for (Hotel hotel : all) {
             boolean isRegion = Objects.equals(hotel.getRegion().name(), region);
-            if (isRegion) {
-                hotels.add(hotel);
+
+            for (Room room : hotel.getRooms()) {
+                Integer roomCount1 = room.getRoomCount();
+
+                if (roomCount1.equals(roomCount) && isRegion) {
+                    hotels.add(hotel);
+                }
             }
         }
 
@@ -90,6 +96,11 @@ public class HotelService {
     @Transactional
     public List<Room> getRoomsAdmin(Integer id, Integer roomCount, LocalDateTime startDate, LocalDateTime endDate) {
         return roomRepository.findAvailableRooms(id, roomCount, startDate, endDate);
+    }
+
+    @Transactional
+    public List<Hotel> getHotelForAdmin() {
+        return hotelRepository.findAll();
     }
 
     // todo add exceptions all methods

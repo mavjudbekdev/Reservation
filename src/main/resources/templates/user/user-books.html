@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .books-button{
+            color: white;
+            display: flex;
+            border: none;
+            width: 138px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            background-color: #4CAF50;
+            height: 41px;
+            border-radius: 6px;
+            text-size-adjust: revert;
+        }
+
+        .books-button:hover{
+            background: #4CAF50;
+        }
+
+        .books-button-class{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<h1>User Books</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Room Number</th>
+        <th>Room Count</th>
+        <th>Room Daily Price</th>
+        <th>Hotel Name</th>
+        <th>Hotel Region</th>
+        <th>Phone number</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${userBooks}">
+        <td th:text="${book.room.number}"></td>
+        <td th:text="${book.room.roomCount}"></td>
+        <td th:text="${book.room.roomDailyPrice}"></td>
+
+        <td th:text="${book.room.hotel.name}"></td>
+        <td th:text="${book.room.hotel.region}"></td>
+        <td th:text="${book.room.hotel.phoneNumber}"></td>
+
+        <td class="books-button-class">
+            <form th:action="@{/book/deleteByBook}" method="delete">
+                <label>
+                    <input hidden="hidden" name="bookId" th:value="${book.id}">
+                </label>
+                <button type="submit" class="books-button"> Delete </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
