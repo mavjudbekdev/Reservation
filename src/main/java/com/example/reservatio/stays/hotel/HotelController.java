@@ -4,6 +4,7 @@ import com.example.reservatio.stays.hotel.HotelService;
 import com.example.reservatio.stays.hotel.dto.HotelCreateDto;
 import com.example.reservatio.stays.hotel.dto.HotelResponseDto;
 import com.example.reservatio.stays.hotel.dto.HotelSearchDto;
+import com.example.reservatio.stays.hotel.entity.Hotel;
 import com.example.reservatio.stays.room.entity.Room;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,8 @@ public class HotelController {
     public String getAllHotel(@ModelAttribute HotelSearchDto hotelSearchDto, Model model){
        List<HotelResponseDto> hotelResponseDto = hotelService.getAllHotels(hotelSearchDto);
        model.addAttribute("hotels",hotelResponseDto);
-       return "index";
+       return "index-hotel";
     }
-
-
 
     @GetMapping("/{id}/rooms")
     public String getHotelRooms(@PathVariable Integer id,

@@ -63,7 +63,7 @@ public class RentController {
         User user = userService.currentUser();
         userService.fullRegister(fullRegisterDto,user.getId());
 
-        return "success";
+        return "redirect:/";
     }
 
 

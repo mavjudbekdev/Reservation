@@ -8,7 +8,9 @@
 <body>
 
 <div class="header container">
-    <h1 class="logo">Booking.com</h1>
+    <a href="http://localhost:8080/auth/admin">
+        <h1 class="logo">Booking.com</h1>
+    </a>
     <div></div>
 
 </div>
@@ -32,6 +34,7 @@
     <form class="search-form" th:action="@{/super/createRoom}" method="post">
         <input class="input" type="number" name="number" placeholder="room number">
         <input class="input" type="number" name="roomCount" placeholder="room count">
+        <input class="input" type="number" name="roomDailyPrice" placeholder="room count">
         <input type="hidden" name="hotelId" th:value="${hotel.id}">
         <button  class="btn secondary">Add room</button>
     </form>

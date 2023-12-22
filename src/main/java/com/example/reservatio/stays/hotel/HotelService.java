@@ -1,5 +1,6 @@
 package com.example.reservatio.stays.hotel;
 
+import com.example.reservatio.stays.hotel.address.Region;
 import com.example.reservatio.stays.hotel.dto.HotelCreateDto;
 import com.example.reservatio.stays.hotel.dto.HotelResponseDto;
 import com.example.reservatio.stays.hotel.dto.HotelSearchDto;
@@ -52,19 +53,26 @@ public class HotelService {
 
     }
 
+
+    @Transactional
     public List<HotelResponseDto> checkHotelData(String region, LocalDateTime startDate, LocalDateTime endDate, Integer roomCount) {
         List<Hotel> all = hotelRepository.findAll();
         ArrayList<Hotel> hotels = new ArrayList<>();
         for (Hotel hotel : all) {
             boolean isRegion = Objects.equals(hotel.getRegion().name(), region);
 
-            for (Room room : hotel.getRooms()) {
-                Integer roomCount1 = room.getRoomCount();
+            if (isRegion){
+                for (Room room : hotel.getRooms()) {
+                    Integer roomCount1 = room.getRoomCount();
 
-                if (roomCount1.equals(roomCount) && isRegion) {
-                    hotels.add(hotel);
+                    if (roomCount1.equals(roomCount)) {
+                        hotels.add(hotel);
+                        break;
+                    }
                 }
             }
+
+
         }
 
         return hotels.stream().map(hotelModelMapper::toResponseDto).toList();
@@ -101,6 +109,28 @@ public class HotelService {
     @Transactional
     public List<Hotel> getHotelForAdmin() {
         return hotelRepository.findAll();
+    }
+
+
+    @Transactional
+    public List<Hotel> getFilteredHotels() {
+        List<Hotel> filteredHotels = new ArrayList<>();
+        List<Hotel> hotels = hotelRepository.findAll();
+
+        for (Hotel hotel : hotels) {
+            List<Room> rooms = hotel.getRooms();
+
+            long emptyRoomsCount = rooms.size();
+
+            if (emptyRoomsCount >= 4 && hotel.getRegion() == Region.Tashkent) {
+                filteredHotels.add(hotel);
+            }
+        }
+
+        if (filteredHotels.size() > 6) {
+            filteredHotels.subList(0, 6);
+        }
+        return filteredHotels;
     }
 
     // todo add exceptions all methods
