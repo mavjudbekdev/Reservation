@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -23,6 +25,8 @@
             <a href="#"><h4>List your property</h4></a>
             <a class="register" sec:authorize="isAnonymous()" href="/auth/sign-up">Register</a>
             <a class="sign" sec:authorize="isAnonymous()" href="/auth/sign-in">Sign in </a>
+            <a class="sign" target="_blank" href="/hotel-all/filtered-hotels"> Filter </a>
+
             <a class="sign" sec:authorize="isAuthenticated()" th:href="@{/auth/user-info}">Your account</a>
             <a class="sign" href="/auth/sign-out" sec:authorize="isAuthenticated()">Log out</a>
 
@@ -57,6 +61,7 @@
     </section>
 </header>
 
+<!-- end of header -->
 
 <main>
     <div class="main">
@@ -65,28 +70,27 @@
     </div>
 
     <div class="center-form">
-
-        <form th:action="@{/hotel-all}" method="get" target="_blank">
+        <form class="search-form" th:action="@{/hotel-all}" method="get">
             <select class="input-select" name="region">
-                <option th:each="region: ${T(com.example.reservatio.stays.hotel.address.Region).values()}"
-                        th:text="${region}"
-                        th:value="${region}"
+                <option th:each="cityName: ${T(com.example.reservatio.stays.hotel.address.Region).values()}"
+                        th:text="${cityName}"
+                        th:value="${cityName}"
                 ></option>
             </select>
+
+
 
             <input class="input" name="startDate" type="datetime-local">
             <input class="input" name="endDate" type="datetime-local">
             <input class="input" name="roomCount" type="number">
-
             <button type="submit" class="btn secondary">Search</button>
         </form>
-
     </div>
 
 </main>
 
-<div th:if="${filteredHotels} != null" class="container-see-hotel">
-    <div class="card-car" th:each="hotel : ${filteredHotels}">
+<div th:if="${hotels} != null" class="container-see-hotel">
+    <div class="card-car" th:each="hotel : ${hotels}">
         <div class="car-card-container">
             <img th:src="${hotel.image}" alt="img" class="home-container-img">
         </div>
@@ -94,17 +98,15 @@
         <h3 th:text="${'HOTEL - ' + hotel.name}" class="car-container-text"></h3>
         <h5 th:text="${'REGION - ' + hotel.region} " class="car-container-text"></h5>
         <h5 th:text="${'PHONE NUMBER - ' + hotel.phoneNumber} " class="car-container-text"></h5>
+        <h5> </h5>
 
-        <h5 sec:authorize="isAnonymous()" class="car-container-text">You are not registered</h5>
-
-        <a sec:authorize="isAuthenticated()" th:href="@{hotel-all/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},
+        <a th:href="@{hotel-all/{hotelId}/rooms(hotelId=${hotel.id},startDate=${param.get('startDate')},
         endDate=${param.get('endDate')},roomCount=${param.get('roomCount')})}">
             <button class="toggleButton-hotel">See availability</button>
         </a>
     </div>
 
 </div>
-
 
 <footer></footer>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

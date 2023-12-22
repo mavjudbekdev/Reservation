@@ -1,5 +1,6 @@
 package com.example.reservatio.stays.hotel;
 
+import com.example.reservatio.stays.hotel.address.Region;
 import com.example.reservatio.stays.hotel.entity.Hotel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

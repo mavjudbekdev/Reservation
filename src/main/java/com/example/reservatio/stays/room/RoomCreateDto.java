@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class RoomCreateDto {
     private Integer number;
     private Integer roomCount;
+    private Integer roomDailyPrice;
     private Integer hotelId;
 }

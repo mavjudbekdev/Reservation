@@ -16,8 +16,15 @@ public class BookController {
 
     @PostMapping
     public String createBook(@AuthenticationPrincipal User user, @ModelAttribute BookCreateDto bookCreateDto){
-        bookService.create(bookCreateDto, user);
-        return "redirect:/";
+
+        String s = bookService.create(bookCreateDto, user);
+
+        if(!s.isEmpty()){
+
+            return "redirect:/rental/full-reg";
+        }
+
+        return "redirect:/auth/books";
     }
 
     @GetMapping("/deleteByBook")

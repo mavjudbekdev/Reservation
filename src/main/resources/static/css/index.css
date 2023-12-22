@@ -287,6 +287,15 @@ p {
 
 }
 
+.user-card{
+    width: 30%;
+    height: 722px;
+    margin: 55px 12px;
+    border: 1px solid #aba9a9;
+    border-radius: 5px;
+    background-color: #f0f3f5;
+}
+
 
 .collapse {
     width: 200px;
@@ -400,8 +409,15 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
+
+.user-card-text{
+    margin-left: 20px;
+    color: #343030;
+    margin-top: 7px;
+}
+
+
 
 
 .toggleButton{

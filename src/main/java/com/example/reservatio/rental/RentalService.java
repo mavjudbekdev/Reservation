@@ -31,10 +31,9 @@ public class RentalService {
         User user = userRepository.findUserByEmail(rentCreateDto.getEmail()).get();
 
         if (user.getFirstName() == null && user.getLastName() == null && user.getPhoneNumber() == null && user.getPassportNumber() == null && user.getCardNumber() == null) {
-            System.out.println("User malumolari to´liq emas");
+            System.out.println("User information is incomplete");
             return "rental/full-reg/" + user.getId();
         }
-
 
         Car car = carRepository.findById(rentCreateDto.getCarId()).get();
         Rental rent = new Rental(null, user, car, rentCreateDto.getStartDate(), rentCreateDto.getEndDate());

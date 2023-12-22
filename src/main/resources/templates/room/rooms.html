@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/rooms.css}">
 
 </head>
 <body>
@@ -36,7 +36,11 @@
 
 <div th:if="${rooms} != null" class="container-see-hotel">
     <div class="card-see-hotel" th:each="room : ${rooms}">
-        <h1 th:text="${room.number}"></h1>
+        <h1 th:text="${room.hotel.name}"></h1>
+        <h1 th:text="${room.hotel.region}"></h1>
+        <h1 th:text="${'Room number ' + room.number}"></h1>
+        <h3 th:text="${'Room count ' + room.roomCount}"></h3>
+        <h3 th:text="${'Room deily price ' + room.roomDailyPrice}"></h3>
         <form th:action="@{/book
                             (roomId = ${room.id},
                             startDate=${param.get('startDate')},
