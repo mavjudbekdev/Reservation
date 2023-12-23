@@ -32,15 +32,12 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final BookRepository bookRepository;
 
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper,BookRepository bookRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.bookRepository = bookRepository;
-
     }
 
 
@@ -49,7 +46,6 @@ public class UserService implements UserDetailsService {
         return userRepository.findUserByEmail(username).get();
     }
 
-    // todo add exception user not found
 
     public void register(UserCreateDto userCreateDto) {
 
@@ -76,9 +72,6 @@ public class UserService implements UserDetailsService {
         user.setPhoneNumber(full.getPhoneNumber());
         user.setUserUpdateAT(LocalDateTime.now());
         userRepository.save(user);
-
-
-        // todo add exception user invalid information entered
 
     }
 
@@ -120,4 +113,14 @@ public class UserService implements UserDetailsService {
         Optional<User> userOptional = userRepository.findById(id);
         return userOptional.map(User::getRents).orElseThrow(NullPointerException::new);
     }
+
+    @Transactional
+    public List<User> getAllUser() {
+        List<User> all = userRepository.findAll();
+        return all;
+    }
+
+
+    // todo add exception user invalid information entered
+
 }

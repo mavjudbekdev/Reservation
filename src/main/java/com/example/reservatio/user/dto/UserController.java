@@ -47,6 +47,10 @@ public class UserController {
         return "user/user-books";
     }
 
+
+
+
+
     @GetMapping("/rents")
     public String getUserRent(@AuthenticationPrincipal User user, Model model){
         List<Rental> userRents = userService.getUserRentsByUserId(user.getId());
