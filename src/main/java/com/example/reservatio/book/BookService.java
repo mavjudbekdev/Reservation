@@ -17,7 +17,6 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final RoomRepository roomRepository;
-    private final UserRepository userRepository;
 
     @Transactional
     public String create(BookCreateDto bookCreateDto, User user) {

@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/reservation
-    password: 123
+    url: jdbc:postgresql://db.qcphkexqxumrlpdrlgiv.supabase.co:5432/postgres
+    password: EE-nFeG!-e-v(@9
     username: postgres
   jpa:
     hibernate:

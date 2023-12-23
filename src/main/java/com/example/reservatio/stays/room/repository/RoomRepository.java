@@ -35,3 +35,4 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
                                   LocalDateTime startDate,
                                   LocalDateTime endDate);
 }
+

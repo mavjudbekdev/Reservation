@@ -53,7 +53,6 @@ public class HotelService {
 
     }
 
-
     @Transactional
     public List<HotelResponseDto> checkHotelData(String region, LocalDateTime startDate, LocalDateTime endDate, Integer roomCount) {
         List<Hotel> all = hotelRepository.findAll();
@@ -71,9 +70,8 @@ public class HotelService {
                     }
                 }
             }
-
-
         }
+
 
         return hotels.stream().map(hotelModelMapper::toResponseDto).toList();
 
